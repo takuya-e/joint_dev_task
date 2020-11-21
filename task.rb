@@ -94,8 +94,7 @@ def q11
   sports = ["サッカー", "バスケ", "野球", ["フットサル", "野球"], "水泳", "ハンドボール", ["卓球", "サッカー", "ボルダリング"]]
 
   # 以下に回答を記載
-  sports.flatten!
-  sports.uniq!
+  sports.flatten!.uniq!
   puts "ユーザーの趣味一覧"
   sports.each.with_index(1) do |sport, i|
     puts "No#{i} #{sport}"
@@ -130,14 +129,8 @@ def q15
   data2 = { name: "yamada", hobby: "baseball", role: "normal" }
 
   # 以下に回答を記載
-  if data1.has_key?(:age)
-    puts "OK"
-    else puts "NG"
-  end
-  if data2.has_key?(:age)
-    puts "OK"
-    else puts "NG"
-  end
+   puts data1.has_key?(:age) ? "OK" : "NG"
+   puts data2.has_key?(:age) ? "OK" : "NG"
 end
 
 def q16
@@ -157,7 +150,21 @@ end
 class UserQ17
   # 以下に回答を記載
 
+  def info
+    puts <<~TEXT
+    "名前:#{@name}"
+    "年齢:#{@age}"
+    "性別:#{@gender}"
+    TEXT
+  end
+
 end
+
+  def initialize(**params)
+    @name = params[:name]
+    @age = params[:age]
+    @gender = params[:gender]
+  end
 
 def q17
   # ここは変更しないで下さい（ユーザー情報は変更していただいてOKです）
@@ -171,6 +178,18 @@ end
 
 class UserQ18
   # 以下に回答を記載
+  def introduce
+    if @age > 30
+      puts "こんにちは,#{@name}と申します。宜しくお願いいたします。"
+    else
+      puts "はいさいまいど〜,#{@name}です!!!"
+    end
+  end
+
+  def initialize(params)
+    @name = params[:name]
+    @age = params[:age]
+  end
 
 end
 
